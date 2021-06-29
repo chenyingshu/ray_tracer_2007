@@ -1,7 +1,8 @@
-# Stock Market Prediction using LSTM in Vintage Implementation Environment
+# Stock Market Prediction using LSTM <br> in Vintage Implementation Environment
 
-We use SSE index data from 1997 to 2006 as training data, and predict stock market date in the next two years (i.e., 2007 and 2008). 
-We trained the LSTM (RNN) model using GPU accelaration via Theano.
+We use [SSE index data](https://finance.yahoo.com/quote/000001.SS/history?period1=867801600&period2=1623283200&interval=1d&filter=history&frequency=1d&includeAdjustedClose=true) from 1997 to 2006 as training data, and predict stock market date in the next two years (i.e., 2007 and 2008). 
+
+We trained the [LSTM](https://link.springer.com/chapter/10.1007/3-540-44668-0_93) (RNN) model for prediction using an old GPU for accelaration via Theano.
 
 ## Specifications
 OS: Windows 7 (64 bit)
@@ -74,6 +75,19 @@ Network Architecture
 ref: https://github.com/Kulbear/stock-prediction/blob/master/stock-prediction.ipynb
 
 2-layer LSTM
+
+## Reference
+**LSTM for prediction:**
+
+Gers, F. A., Eck, D., & Schmidhuber, J. (2001). Applying LSTM to time series predictable through time-window approaches. International Conference on Artificial Networks 2001 (pp. 669-676). Retrieved from https://link.springer.com/chapter/10.1007/3-540-44668-0_93. 
+
+**LSTM Implementation in Python using Keras:**
+
+Time Series Prediction with LSTM Recurrent Neural Networks in Python with Keras:
+https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
+
+Stock Prediction with Recurrent Neural Network: 
+https://github.com/Kulbear/stock-prediction/blob/master/stock-prediction.ipynb
 
 
 
