@@ -80,11 +80,11 @@ allow_input_downcast = True
 
 
 [gcc]
-cxxflags = -IC:\Users\ielm\Anaconda\envs\theano_keras_env\MinGW\include
+cxxflags = -IC:\Users\USER_NAME\Anaconda\envs\stock_pred\MinGW\include
 
 [nvcc]
 fastmath=True
-flags = -LC:\Users\ielm\Anaconda\envs\theano_keras_env\libs
+flags = -LC:\Users\USER_NAME\Anaconda\envs\stock_pred\libs
 compiler_bindir=C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin
 flags = -arch=sm_30
 flags = -optimizer=fast_compile
