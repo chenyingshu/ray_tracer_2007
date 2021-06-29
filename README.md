@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The repository contains source and basic data for stock market price prediction.
+The repository contains source code and basic data for stock market price prediction.
 
 ## Instruction
  
