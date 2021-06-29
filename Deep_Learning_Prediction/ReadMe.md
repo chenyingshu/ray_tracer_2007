@@ -4,6 +4,15 @@ We use [SSE index data](https://finance.yahoo.com/quote/000001.SS/history?period
 
 We trained the [LSTM](https://link.springer.com/chapter/10.1007/3-540-44668-0_93) (RNN) model for prediction using an old GPU for accelaration via Theano.
 
+<div style="display: flex">
+  <img src="./Results/20_train_prediction_plot_15Kepoch.png" alt="Train set prediction"  style="float: left; margin-right: 10px;" width="45%" />
+  <img src="./Results/20_test_prediction_plot_15Kepoch.png" alt="Test set prediction"  style="float: left; margin-right: 10px;" width="45%" />
+</div>
+<div style="display: flex; flex-direction: row;">
+  <li style="display:inline; float: center; margin-right: 10px;" width="45%" > [Left] Training set prediction (1997-2006)</>
+  <li style="display:inline; float: center; margin-right: 10px;" width="45%" > [Right] Testing set prediction (2007-2008)</>
+</div>
+
 ## Specifications
 OS: Windows 7 (64 bit)
 
