@@ -18,6 +18,7 @@ OS: Windows 7 (64 bit)
 
 GPU: 
   - Hardware: 1 x NVIDIA GeForece 8800 GTX 
+  - Memory 732MB
   - CUDA driver version: 5.5
   - CUDA computing capability : 1.0 (CUDA <= v6)
   - 128 CUDA cores (8 cuda cores * 16 multiprocessors)
