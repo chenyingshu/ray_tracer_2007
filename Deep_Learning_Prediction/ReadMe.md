@@ -4,14 +4,21 @@ We use [SSE index data](https://finance.yahoo.com/quote/000001.SS/history?period
 
 We trained the [LSTM](https://link.springer.com/chapter/10.1007/3-540-44668-0_93) (RNN) model for prediction using an old GPU for accelaration via Theano.
 
-<div style="display: flex">
-  <img src="./Results/20_train_prediction_plot_15Kepoch.png" alt="Train set prediction"  style="float: left; margin-right: 10px;" width="45%" />
-  <img src="./Results/20_test_prediction_plot_15Kepoch.png" alt="Test set prediction"  style="float: left; margin-right: 10px;" width="45%" />
-</div>
-<div style="display: flex; flex-direction: row;">
-  <li style="display:inline; float: center; margin-right: 10px;" width="45%" > [Left] Training set prediction (1997-2006)</>
-  <li style="display:inline; float: center; margin-right: 10px;" width="45%" > [Right] Testing set prediction (2007-2008)</>
-</div>
+
+<table style="">
+  <tr>
+    <td><img src="./Results/20_train_prediction_plot_15Kepoch.png" alt="Train set prediction"  style="float: center; margin: 0;" width="100%" /></td>
+    <td><img src="./Results/20_test_non-iter_prediction_plot_15kepoch.png" alt="Test set prediction"  style="float: center; margin-righ: 0;" width="100%" /></td>
+  </tr>
+  <tr>
+    <th> Training set prediction (1997-2006) </th>
+    <th> Testing set prediction (2007-2008) </th>
+  </tr>
+</table>
+<!-- <div style="display: flex; flex-direction: row;">
+  <div style="display:flex; float: center; margin-right: 10px;" width="45%" > [Left] Training set prediction (1997-2006)</>
+  <div style="display:flex; float: center; margin-right: 10px;" width="45%" > [Right] Testing set prediction (2007-2008)</>
+</div> -->
 
 ## Specifications
 OS: Windows 7 (64 bit)
@@ -104,32 +111,130 @@ cd Deep_Learning_Prediction
 Two modes:
 
 **Non-iterative**
+
+Predict everyday (default amend_num = 1).
 ```
 python Keras-LSTM.py --mode test
 ```
 
 **Iterative**
+
+Predict every N (integer) days. 
+
+Use past {real N-day data{ to predict 1st-day datum,
+
+use past {real (N-1)-day data + predicted 1-day datum} to predict 2nd-day datum,
+
+use past {real (N-2)-day data + predicted 2-day data} to predict 3rd-day datum,
+
+...
+
+use past {real 1-day datum + predicted (N-1)-day data} to predict Nth-day datum.
 ```
-python Keras-LSTM.py --mode test --test-mode iter
+python Keras-LSTM.py --mode test --amend_num N
 ```
 
 
 ### 3. Training
 
+For exampel, train with every past 30-day data and predict 31st day datum.
+```
+python Keras-LSTM.py --past_days 30 --epoch 1500 --batch 768
+```
+
 ## Results
 
+### Predictions from 1997 to 2006 (training set).
+<table>
+   <tr>
+    <th colspan='4'>Prediction daily - #Past days</th>
+  </tr>
+  <tr>
+    <th>7</th>
+    <th>30</th>
+    <th>90</th>
+    <th>150</th>
+  </tr>
+  <tr>
+    <td><img src="./Results/7_E1500_B768/7_train_1interval_prediction_plot.png" alt="Test set prediction(7)"  style="float: center; margin: 0;" width="100%" /></td>
+    <td><img src="./Results/30_E1500_B768/30_train_1interval_prediction_plot.png" alt="Test set prediction(30)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/90_E1500_B256/90_train_1interval_prediction_plot.png" alt="Test set prediction(90)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/150_E1500_B128/150_train_1interval_prediction_plot.png" alt="Train set prediction(150)"  style="float: center; margin: 0;" width="100%" /</td>
+  </tr>
+</table>
+
+### Predictions from 2007 to 2008 (test set).
+
+<table>
+  <tr>
+    <th rowspan='2'>#Past</th>
+    <th colspan='4'>Prediction - amendment interval</th>
+  </tr>
+  <tr>
+    <th>1</th>
+    <th>7</th>
+    <th>30</th>
+    <th>90</th>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td><img src="./Results/7_E1500_B768/7_test_1interval_prediction_plot.png" alt="Test set prediction(7-1)"  style="float: center; margin: 0;" width="100%" /></td>
+    <td><img src="./Results/7_E1500_B768/7_test_7interval_prediction_plot.png" alt="Test set prediction(7-7)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/7_E1500_B768/7_test_30interval_prediction_plot.png" alt="Test set prediction(7-30)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/7_E1500_B768/7_test_90interval_prediction_plot.png" alt="Test set prediction(7-90)"  style="float: center; margin: 0;" width="100%" /</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td><img src="./Results/30_E1500_B768/30_test_1interval_prediction_plot.png" alt="Test set prediction(30-1)"  style="float: center; margin: 0;" width="100%" /></td>
+    <td><img src="./Results/30_E1500_B768/30_test_7interval_prediction_plot.png" alt="Test set prediction(30-7)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/30_E1500_B768/30_test_30interval_prediction_plot.png" alt="Test set prediction(30-30)"  style="float: center; margin: 0;" width="100%" /</td>
+    <td><img src="./Results/30_E1500_B768/30_test_90interval_prediction_plot.png" alt="Test set prediction(30-90)"  style="float: center; margin: 0;" width="100%" /</td>
+  </tr>
+  <tr>
+    <td>90</td>
+    <td><img src="./Results/90_E1500_B256/90_test_1interval_prediction_plot.png" alt="Test set prediction(90-1)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/90_E1500_B256/90_test_7interval_prediction_plot.png" alt="Test set prediction(90-7)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/90_E1500_B256/90_test_30interval_prediction_plot.png" alt="Test set prediction(90-30)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/90_E1500_B256/90_test_90interval_prediction_plot.png" alt="Test set prediction(90-90)"  style="float: center; margin: 0;" width="100%"/></td>
+  </tr>
+  <tr>
+    <td>150</td>
+    <td><img src="./Results/150_E1500_B128/150_test_1interval_prediction_plot.png" alt="Test set prediction(150-1)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/150_E1500_B128/150_test_7interval_prediction_plot.png" alt="Test set prediction(150-7)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/150_E1500_B128/150_test_30interval_prediction_plot.png" alt="Test set prediction(150-30)"  style="float: center; margin: 0;" width="100%"/></td>
+    <td><img src="./Results/150_E1500_B128/150_test_90interval_prediction_plot.png" alt="Test set prediction(150-90)"  style="float: center; margin: 0;" width="100%"/></td>
+  </tr>
+</table>
+
+
 ## Algorithm and Implementation Details
-Training data: 
+### Training data: 
 
-X = <N, past_days, 1>
+- X = <N, past_days, 1>
+- Y = <N, 1>
 
-Y = <N, 1>
+### Network Architecture
+2-layer LSTM
 
-Network Architecture
+layers = <feature-dim:x, window-size:w, 100:n, output-dim:y>
+
+- feature-dim: 1 (only use close price)
+- window-size: look_back days
+- Layer 2 nodes: 100 (manual-defined)
+- output-dim: 1 (only output close price)
+- e.g., 1->7->100->1
+  
+Whole architecture:
+
+in_feature_dim(x)  =>  window_size(w) -> dropout(0.4) => 100(n) -> dropout(0.3) => out_dim(y) -> activate(linear)
+
+Loss: MSE
+
+Optimizer: rmsprop
 
 ref: https://github.com/Kulbear/stock-prediction/blob/master/stock-prediction.ipynb
 
-2-layer LSTM
+
 
 ## Reference
 **LSTM for prediction:**
