@@ -167,7 +167,7 @@ python Keras-LSTM.py --past_days 30 --epoch 1500 --batch 768
 
 <table>
   <tr>
-    <th rowspan='2'>#Past</th>
+    <th rowspan='2'>#Past (Window)</th>
     <th colspan='4'>Prediction - amendment interval</th>
   </tr>
   <tr>
