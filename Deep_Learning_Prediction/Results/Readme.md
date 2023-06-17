@@ -1,0 +1,3 @@
+- Each folder named "xxx_Eyyy_Bzzz" indicates prediction results from a model using past xxx days' data to predict (xxx+1)th day's datum.
+- Within each folder named "xxx_Eyyy_Bzzz", file "xxx_test_aaainterval_prediction.csv" indicates predicton results of the model using every aaa amendment interval.
+  - For detail of "amendment interval", please refer to inference "Iterative" mode: [https://github.com/chenyingshu/ray_tracer_2007/tree/main/Deep_Learning_Prediction#2-inference-with-pretrained-model]()
