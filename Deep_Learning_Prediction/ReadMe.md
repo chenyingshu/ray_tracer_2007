@@ -207,6 +207,45 @@ python Keras-LSTM.py --past_days 30 --epoch 1500 --batch 768
 </table>
 
 
+### Interpretation: WHAT MODEL DOES
+The prediction model takes as input "NumberOfPastDays" stock data (e.g. 30 consecutive days' close prices),
+and outputs 1 lastest day's stock day (e.g., 31st day's close price).
+
+### Interpretation: HOW TO PREDICT
+**Some terms:**
+- Predict (or infer or test) = prediction operation of the model <br>
+- Window (or #Past or past_days) = number of past consecutive days <br>
+- Amend_num (or amendment interval or N) = every "AmendInterval" days, use ground-truth/real stock data to predict lastest stock price  <br>
+
+**Example:**
+Window=30, Amend_num=7; It means: <br>
+Step 1) The model uses real past consecutive 30 days' close prices to predict 31st day's close price. <br>
+In other words, The model uses {real 1st to 30th days' close prices} to predict 31st day's close price. <br>
+Step 2) The model uses {real 2nd to 30th days' close prices} + {predicted 31st day's price} to predict 32nd day's close price. <br>
+Step 3) The model uses {real 3rd to 30th days' close prices} + {predicted 31st to 32nd days' prices} to predict 33rd day's close price. <br>
+Step 4) The model uses {real 4th to 30th days' close prices} + {predicted 31st to 33rd days' prices} to predict 34th day's close price. <br>
+Step 5) The model uses {real 5th to 30th days' close prices} + {predicted 31st to 34th days' prices} to predict 35th day's close price. <br>
+Step 6) The model uses {real 6th to 30th days' close prices} + {predicted 31st to 35th days' prices} to predict 36th day's close price. <br>
+Step 7) The model uses {real 7th to 30th days' close prices} + {predicted 31st to 36th days' prices} to predict 37th day's close price. <br>
+
+_Enter "Amendment Step"_ <br>
+Step 8) The model uses {real 8th to 37th days' close prices} to predict 38th day's close price. <br>
+Step 9) The model uses {real 9th to 37th days' close prices} + {predicted 38th day's price}  to predict 39th day's close price. <br>
+Step 10) The model uses {real 10th to 37th days' close prices} + {predicted 38th to 39th days' price}  to predict 40th day's close price. <br>
+Step 11) The model uses {real 11th to 37th days' close prices} + {predicted 38th to 40th days' price}  to predict 41st day's close price. <br>
+Step 12) The model uses {real 12th to 37th days' close prices} + {predicted 38th to 41st days' price}  to predict 42nd day's close price. <br>
+Step 13) The model uses {real 13th to 37th days' close prices} + {predicted 38th to 42nd days' price}  to predict 43rd day's close price. <br>
+Step 14) The model uses {real 14th to 37th days' close prices} + {predicted 38th to 43rd days' price}  to predict 44th day's close price. <br>
+
+_Enter "Amendment Step" Again_ <br>
+Step 15) The model uses {real 15th to 44th days' close prices} to predict 45th day's close price. <br>
+Step 16) The model uses {real 16th to 44th days' close prices} + {predicted 45th day's price}  to predict 46th day's close price. <br>
+...... <br>
+
+_Enter "Amendment Step" Again_ <br>
+Step 22) <br>
+...... <br>
+
 ## Algorithm and Implementation Details
 ### Training data: 
 
