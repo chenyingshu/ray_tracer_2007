@@ -121,7 +121,7 @@ python Keras-LSTM.py --mode test
 
 Predict every N (integer) days. 
 
-Use past {real N-day data{ to predict 1st-day datum,
+Use past {real N-day data} to predict 1st-day datum,
 
 use past {real (N-1)-day data + predicted 1-day datum} to predict 2nd-day datum,
 
